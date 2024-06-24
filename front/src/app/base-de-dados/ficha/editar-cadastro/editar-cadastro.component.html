@@ -1,166 +1,163 @@
-<body>
-    <header>
+<body class="bg-light p-3 d-flex justify-content-center">
+   <div class="w-75">
+      <div class="mt-5"></div>
       <div id="nav-back">
-        <div id="nav-back-icon"></div>
-        <a routerLink="/base-de-dados/ficha" routerLinkActive="active">Ficha</a>
+         <div id="nav-back-icon"></div>
+         <a routerLink="/base-de-dados/ficha" routerLinkActive="active">&larr; Voltar para a ficha</a>
       </div>
-      
-      <h1 class="title">Editar cadastro</h1>
-      <button class="cancel-button" (click)="cancel()">Cancelar</button>
-      <button class="save-button" (click)="save()">
-          <span class="check-icon">✓</span> Salvar
-      </button>
-    </header>
-  
-    <form #acolhimentoForm="ngForm">
-      <div class="form-section">
-        <h2>Dados pessoais</h2>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nomeCompleto">Nome completo:</label>
-            <input type="text" id="nomeCompleto" name="nomeCompleto" [(ngModel)]="acolhimento.nome" required />
-            <div *ngIf="acolhimentoForm.controls['nomeCompleto']?.invalid && (acolhimentoForm.controls['nomeCompleto']?.dirty || acolhimentoForm.controls['nomeCompleto']?.touched)" class="error-message">
-              Nome completo é obrigatório.
+      <div class="card">
+         <div class="card-header d-flex justify-content-between align-items-center" style="padding-right: 0.25rem;">
+            <strong>Editar cadastro</strong>
+            <div>
+               <button class="cancel-button btn btn-secondary m-1 mt-0 mb-0" (click)="cancel()">Cancelar</button>
+               <button class="save-button btn btn-warning m-1 mt-0 mb-0" (click)="save()">
+               <span class="check-icon">✓</span> Salvar
+               </button>
             </div>
-          </div>
-  
-          <div class="form-group">
-            <label for="dataNascimento">Data de nascimento:</label>
-            <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="this.dataNascimento" required/>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="form-group">
-            <label for="tipoDocumento">Tipo documento:</label>
-            <select id="tipoDocumento" name="tipoDocumento" [(ngModel)]="acolhimento.documentoTipo" required>
-              <option *ngFor="let tipo of acolhimentoDocumentoTipos" [value]="tipo">
-                {{ tipo }}
-              </option>
-            </select>
-          </div>
-  
-          <div class="form-group">
-            <label for="documento">Documento:</label>
-            <input type="text" id="documento" name="documento" [(ngModel)]="acolhimento.documento" required/>
-          </div>
-  
-          <div class="form-group">
-            <label for="documentoEmissor">Órgão emissor:</label>
-            <input type="text" id="documentoEmissor" name="documentoEmissor" [(ngModel)]="acolhimento.documentoEmissor" required/>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="form-group">
-            <label for="racaCor">Raça/cor:</label>
-            <select id="racaCor" name="racaCor" [(ngModel)]="acolhimento.racaCor" required>
-              <option *ngFor="let raca of acolhimentoRacaCores" [value]="raca">
-                {{ raca }}
-              </option>
-            </select>
-          </div>
-  
-          <div class="form-group">
-            <label for="orientacaoSexual">Orientação sexual:</label>
-            <select id="orientacaoSexual" name="orientacaoSexual" [(ngModel)]="acolhimento.orientacaoSexual" required>
-              <option *ngFor="let orientacao of acolhimentoOrientacaoSexuais" [value]="orientacao">
-                {{ orientacao }}
-              </option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="form-group">
-            <label for="escolaridade">Escolaridade:</label>
-            <select id="escolaridade" name="escolaridade" [(ngModel)]="acolhimento.escolaridade" required>
-              <option *ngFor="let escolaridade of acolhimentoEscolaridades" [value]="escolaridade">
-                {{ escolaridade }}
-              </option>
-            </select>
-          </div>
-  
-          <div class="form-group">
-            <label for="qtdFilhos">Número de filhos:</label>
-            <input type="number" id="qtdFilhos" name="qtdFilhos" [(ngModel)]="acolhimento.qtdfilhos" required/>
-          </div>
-        </div>
+         </div>
+         <div class="p-3">
+            <form #acolhimentoForm="ngForm">
+               <div class="form-section">
+                  <h4 class="pb-2" >Dados pessoais</h4>
+                  <div class="form-row row">
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="nomeCompleto">Nome completo:</label>
+                        <input type="text" id="nomeCompleto" name="nomeCompleto" [(ngModel)]="acolhimento.nome" required class="form-control"/>
+                        <div *ngIf="acolhimentoForm.controls['nomeCompleto']?.invalid && (acolhimentoForm.controls['nomeCompleto']?.dirty || acolhimentoForm.controls['nomeCompleto']?.touched)" class="error-message">
+                           Nome completo é obrigatório.
+                        </div>
+                     </div>
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="dataNascimento">Data de nascimento:</label>
+                        <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="this.dataNascimento" required class="form-control"/>
+                     </div>
+                  </div>
+                  <div class="form-row row">
+                     <div class="form-group col-md-4 mb-2">
+                        <label for="tipoDocumento">Tipo documento:</label>
+                        <select id="tipoDocumento" name="tipoDocumento" [(ngModel)]="acolhimento.documentoTipo" required class="form-control">
+                        <option *ngFor="let tipo of acolhimentoDocumentoTipos" [value]="tipo">
+                        {{ tipo }}
+                        </option>
+                        </select>
+                     </div>
+                     <div class="form-group col-md-4 mb-2">
+                        <label for="documento">Documento:</label>
+                        <input type="text" id="documento" name="documento" [(ngModel)]="acolhimento.documento" required class="form-control"/>
+                     </div>
+                     <div class="form-group col-md-4 mb-2">
+                        <label for="documentoEmissor">Órgão emissor:</label>
+                        <input type="text" id="documentoEmissor" name="documentoEmissor" [(ngModel)]="acolhimento.documentoEmissor" required class="form-control"/>
+                     </div>
+                  </div>
+                  <div class="form-row row">
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="racaCor">Raça/cor:</label>
+                        <select id="racaCor" name="racaCor" [(ngModel)]="acolhimento.racaCor" required class="form-control">
+                        <option *ngFor="let raca of acolhimentoRacaCores" [value]="raca">
+                        {{ raca }}
+                        </option>
+                        </select>
+                     </div>
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="orientacaoSexual">Orientação sexual:</label>
+                        <select id="orientacaoSexual" name="orientacaoSexual" [(ngModel)]="acolhimento.orientacaoSexual" required class="form-control">
+                        <option *ngFor="let orientacao of acolhimentoOrientacaoSexuais" [value]="orientacao">
+                        {{ orientacao }}
+                        </option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-row row">
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="escolaridade">Escolaridade:</label>
+                        <select id="escolaridade" name="escolaridade" [(ngModel)]="acolhimento.escolaridade" required class="form-control">
+                        <option *ngFor="let escolaridade of acolhimentoEscolaridades" [value]="escolaridade">
+                        {{ escolaridade }}
+                        </option>
+                        </select>
+                     </div>
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="qtdFilhos">Número de filhos:</label>
+                        <input type="number" id="qtdFilhos" name="qtdFilhos" [(ngModel)]="acolhimento.qtdfilhos" required class="form-control"/>
+                     </div>
+                  </div>
+               </div>
+               <div class="form-section">
+                  <hr>
+                  <h4 class="pb-2" >Dados de contato</h4>
+                  <div class="form-row row">
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" [(ngModel)]="acolhimento.email" required class="form-control"/>
+                     </div>
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" [(ngModel)]="acolhimento.telefone" required class="form-control"/>
+                     </div>
+                  </div>
+                  <div class="form-row row">
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" [(ngModel)]="acolhimento.cidade" required class="form-control"/>
+                     </div>
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" id="bairro" name="bairro" [(ngModel)]="acolhimento.bairro" required class="form-control"/>
+                     </div>
+                  </div>
+               </div>
+               <div class="form-section">
+                  <hr>
+                  <h4 class="pb-2" >Caracterização da demanda</h4>
+                  <div class="form-row row">
+                     <div class="form-group col-md-6 mb-2">
+                        <label class=" mb-2" for="origem ">Origem:</label>
+                        <select id="origem" name="origem" [(ngModel)]="acolhimento.origem" required class="form-control">
+                        <option *ngFor="let origem of acolhimentoOrigens" [value]="origem">
+                        {{ origem }}
+                        </option>
+                        </select>
+                     </div>
+                     <div class="form-group col-md-6 mb-2">
+                        <label for="servicoReferencia">Serviço de referência:</label>
+                        <select id="servicoReferencia" name="servicoReferencia" [(ngModel)]="acolhimento.servicoReferencia" required class="form-control">
+                        <option *ngFor="let servico of acolhimentoServicosReferencia" [value]="servico">
+                        {{ servico }}
+                        </option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <hr>
+                     <h4 class="pb-2 " >Demanda(s)</h4>
+                     <div class="form-check">
+                        <input type="checkbox" id="Psicologia" name="Psicologia" [(ngModel)]="psicologiaCheckbox" required class="form-check-input"/>
+                        <label class="form-check-label" for="Psicologia"> Psicologia </label>
+                     </div>
+                     <div class="form-check">
+                        <input type="checkbox" id="Juridico" name="Juridico" [(ngModel)]="juridicoCheckbox" required class="form-check-input"/>
+                        <label class="form-check-label" for="Juridico"> Jurídico </label>
+                     </div>
+                     <div class="form-check">
+                        <input type="checkbox" id="AssistenciaSocial" name="AssistenciaSocial" [(ngModel)]="assistenciaSocialCheckbox" required class="form-check-input"/>
+                        <label class="form-check-label" for="AssistenciaSocial"> Assistência social </label>
+                     </div>
+                     <div class="form-check ">
+                        <input type="checkbox" id="Abrigamentos" name="Abrigamentos" [(ngModel)]="abrigamentosCheckbox" required class="form-check-input"/>
+                        <label class="form-check-label" for="Abrigamentos"> Abrigamentos </label>
+                     </div>
+                     <div *ngIf="!isAnyDemandaSelected() && this.tried_submit" class="error-message">
+                        Selecione pelo menos uma demanda.
+                     </div>
+                  </div>
+                  <div class="form-group  mt-3">
+                     <label for="descricao">Descrição:</label>
+                     <textarea id="descricao" name="descricao" [(ngModel)]="acolhimento.descricao" required class="form-control"></textarea>
+                  </div>
+               </div>
+            </form>
+         </div>
       </div>
-  
-      <div class="form-section">
-        <h2>Dados de contato</h2>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" [(ngModel)]="acolhimento.email" required/>
-          </div>
-  
-          <div class="form-group">
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" [(ngModel)]="acolhimento.telefone" required/>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="form-group">
-            <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" name="cidade" [(ngModel)]="acolhimento.cidade" required/>
-          </div>
-  
-          <div class="form-group">
-            <label for="bairro">Bairro:</label>
-            <input type="text" id="bairro" name="bairro" [(ngModel)]="acolhimento.bairro" required/>
-          </div>
-        </div>
-      </div>
-  
-      <div class="form-section">
-        <h2>Caracterização da demanda</h2>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="origem">Origem:</label>
-            <select id="origem" name="origem" [(ngModel)]="acolhimento.origem" required>
-              <option *ngFor="let origem of acolhimentoOrigens" [value]="origem">
-                {{ origem }}
-              </option>
-            </select>
-          </div>
-  
-          <div class="form-group">
-            <label for="servicoReferencia">Serviço de referência:</label>
-            <select id="servicoReferencia" name="servicoReferencia" [(ngModel)]="acolhimento.servicoReferencia" required>
-              <option *ngFor="let servico of acolhimentoServicosReferencia" [value]="servico">
-                {{ servico }}
-              </option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <h3>Demanda(s)</h3>
-          
-        <input type="checkbox" id="Psicologia" name="Psicologia" [(ngModel)]="psicologiaCheckbox" required/>
-        <label for="Psicologia"> Psicologia </label>
-
-        <input type="checkbox" id="Juridico" name="Juridico" [(ngModel)]="juridicoCheckbox" required/>
-        <label for="Juridico"> Jurídico </label>
-
-        <input type="checkbox" id="AssistenciaSocial" name="AssistenciaSocial" [(ngModel)]="assistenciaSocialCheckbox" required/>
-        <label for="AssistenciaSocial"> Assistência social </label>
-
-        <input type="checkbox" id="Abrigamentos" name="Abrigamentos" [(ngModel)]="abrigamentosCheckbox" required/>
-        <label for="Abrigamentos"> Abrigamentos </label>
-        
-        <div *ngIf="!isAnyDemandaSelected() && this.tried_submit">
-        Selecione pelo menos uma demanda.
-        </div>
-        </div>
-  
-        <div class="form-group">
-          <label for="descricao">Descrição:</label>
-          <textarea id="descricao" name="descricao" [(ngModel)]="acolhimento.descricao" required></textarea>
-        </div>
-      </div>
-    </form>
-  </body>
+   </div>
+</body>
