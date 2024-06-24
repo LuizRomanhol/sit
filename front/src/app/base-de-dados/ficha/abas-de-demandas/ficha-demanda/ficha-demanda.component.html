@@ -1,44 +1,31 @@
-<body>
-    <section>
-        <div id="incomplete-warning" *ngIf="!isDemandaAssigned">
-            <div id="warning-icon"></div>
-            <span>Demanda não atribuída</span>
-            <button (click)="openAssignDemandaDialog()">Atribuir demanda</button>
-        </div> 
-
-        <div id="user-info" *ngIf="isDemandaAssigned">
-            <div id="name">
-                <span>Profissional Responsável: </span>
-                <span>{{this.currentAcolhimentoDemanda.usuarioNome}}</span>
-            </div>
-
-            <div id="begin-date">
-                <span>Início do atendimento: </span>
-                <span>{{this.getInicioAtendimento()}}</span>
-            </div>
-
-            <div id="status">
-                <span>Status: </span>
-                <span>{{this.currentAcolhimentoDemanda.status}}</span>
-            </div>
-
-            <div id="user-options">
-                <button (click)="openUpdateStatusDialog()">Atualizar status</button>
-                <button (click)="openNovoRegistroDialog()">+ Novo registro</button>
-            </div>
-        </div>
-
-        <div id="registros" *ngIf="isDemandaAssigned && currentAcolhimentoDemanda.atendimentos">
-            <div class="header">
-                <span>Data do registro</span>
-                <span>Registro</span>
-            </div>
-
-            <div class="registro" *ngFor="let atendimento of currentAcolhimentoDemanda.atendimentos" 
-                    (click)="openVisualizarRegistroDialog(atendimento)">
-                <span>{{ this.dateService.makeDisplayableDate(atendimento.data) }}</span>
-                <span>{{ atendimento.registro }}</span>
-            </div>
-        </div>
-    </section>
-</body>
+<hr>
+<h3> Demandas </h3>
+<div id="user-info" *ngIf="isDemandaAssigned" class="mt-3 col-md-8">
+   <div class="card">
+      <div class="card-header bg-light">
+         Informações do Profissional Responsável
+      </div>
+      <div class="card-body">
+         <p><strong>Profissional Responsável:</strong> {{ this.currentAcolhimentoDemanda.usuarioNome }}</p>
+         <p><strong>Início do atendimento:</strong> {{ this.getInicioAtendimento() }}</p>
+         <p><strong>Status:</strong> {{ this.currentAcolhimentoDemanda.status }}</p>
+         <button class="btn btn-dark" (click)="openUpdateStatusDialog()">Atualizar status</button>
+         <button class="btn btn-dark m-2 mb-0 mt-0" (click)="openNovoRegistroDialog()">+ Novo registro</button>
+      </div>
+   </div>
+</div>
+<div id="registros" *ngIf="isDemandaAssigned && currentAcolhimentoDemanda.atendimentos" class="mt-2 col-md-8">
+   <div class="card">
+      <div class="card-header bg-light">
+         Registros de Atendimento
+      </div>
+      <div class="p-3">
+         <a *ngFor="let atendimento of currentAcolhimentoDemanda.atendimentos"
+         (click)="openVisualizarRegistroDialog(atendimento)"
+         class="list-group-item list-group-item-action">
+         <p class="mb-1"><strong>Data do registro:</strong> {{ this.dateService.makeDisplayableDate(atendimento.data) }}</p>
+         <p class="mb-1"><strong>Registro:</strong> {{ atendimento.registro }}</p>
+         </a>
+      </div>
+   </div>
+</div>
